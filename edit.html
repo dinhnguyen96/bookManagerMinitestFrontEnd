@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id = "bookInfo" >
+  <fieldset><input type="hidden" id="id"/><div>
+    <label class="label_field">bookName </label>
+    <input type="text" id="bookName" /></div>
+    <div>
+      <label class="label_field">authorName</label>
+      <input type="text" id="authorName"  />
+    </div>
+    <div>
+      <label class="label_field">bookPrice</label>
+      <input type="text" id="bookPrice"  />
+    </div>
+    <div>
+      <button class="main_bt" onclick="updateBook()">Cập nhật</button>
+    </div> </fieldset>
+</form>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script>
+  // lấy dữ liệu từ local storage
+   let data = JSON.parse(localStorage.getItem("editProduct"));
+  // Điền thông tin sản phẩm vào form
+   $('#id').val(data.id);
+   $('#bookName').val(data.bookName);
+   $('#authorName').val(data.authorName);
+   $('#bookPrice').val(data.bookPrice);
+
+   // Xóa thông tin sản phẩm khỏi localStorage sau khi đã sử dụng
+   localStorage.removeItem("editProduct");
+</script>
+
+<script src="/js/book.js"></script>
+</body>
+</html>

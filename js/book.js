@@ -120,10 +120,16 @@ function infoBook(id) {
         // Hiển thị thông tin book
         success: function (data)
         {
-            $('#id').val(id);
-            $('#bookName').val(data.bookName);
-            $('#authorName').val(data.authorName);
-            $('#bookPrice').val(data.bookPrice);
+            // Lưu thông tin sản phẩm vào localStorage
+            localStorage.setItem("editProduct", JSON.stringify({
+                id: data.id,
+                bookName: data.bookName,
+                authorName: data.authorName,
+                bookPrice: data.bookPrice
+            }));
+
+            // Chuyển hướng đến trang edit.html
+            window.location.href = "edit.html";
         }
     });
     //chặn sự kiện mặc định của thẻ
